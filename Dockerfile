@@ -1,4 +1,7 @@
 FROM node:20-alpine
-RUN npm install -g @mcpguards/mcp-lock
-ENTRYPOINT ["mcp-lock"]
-CMD ["--help"]
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+CMD ["node", "./dist/mcp-lock.js", "--help"]
