@@ -1,6 +1,6 @@
 {
   "name": "@mcpguards/mcp-lock",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "npm ci for your MCP servers — integrity verification for AI coding tool packages",
   "type": "module",
   "bin": {

@@ -51,7 +51,7 @@ runs:
           SARIF_FLAG="--sarif ${{ inputs.sarif-output }}"
         fi
 
-        npx --yes mcp-lock@0.1.0 verify $CONFIG_FLAG $SARIF_FLAG || {
+        npx --yes @mcpguards/mcp-lock@0.1.2 verify $CONFIG_FLAG $SARIF_FLAG || {
           EXIT_CODE=$?
           if [ $EXIT_CODE -eq 2 ] && [ "$MCP_LOCK_FAIL_ON_MISSING" != "true" ]; then
             echo "::warning::No mcp-lock lockfile found. Run 'mcp-lock init' to create one."
