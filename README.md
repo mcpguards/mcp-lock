@@ -183,7 +183,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: mcpguards/mcp-lock@v1
+      - uses: mcpguards/mcp-lock@v0.1.1
         with:
           sarif-output: mcp-lock.sarif
 
