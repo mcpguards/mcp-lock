@@ -44,7 +44,7 @@ export function generateSarif(
   const seenRules = new Set<string>();
   const rules = findings
     .map((d) => d.status)
-    .filter((s): s is string => !!RULE_DEFINITIONS[s])
+    .filter((s) => !!RULE_DEFINITIONS[s])
     .filter((s) => { if (seenRules.has(s)) return false; seenRules.add(s); return true; })
     .map((s) => {
       const def = RULE_DEFINITIONS[s]!;
