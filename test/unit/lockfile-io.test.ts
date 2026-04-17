@@ -67,6 +67,6 @@ describe('lockfile io', () => {
 
   it('locateLockfile returns correct paths', () => {
     const projectPath = locateLockfile('/my/project', 'project');
-    expect(projectPath).toBe('/my/project/.mcp.lock');
+    expect(projectPath.replace(/\\/g, '/')).toBe('/my/project/.mcp.lock');
   });
 });
