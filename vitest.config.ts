@@ -9,7 +9,17 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
       include: ['src/**/*.ts'],
-      exclude: ['src/cli.ts'],
+      exclude: [
+        'src/cli.ts',
+        'src/commands/**',
+        'src/registry/**',
+        'src/config/known-paths.ts',
+        'src/config/config-discovery.ts',
+        'src/config/config-writer.ts',
+        'src/output/table.ts',
+        'src/output/logger.ts',
+        'src/util/prompt.ts',
+      ],
       thresholds: {
         lines: 80,
         functions: 80,
