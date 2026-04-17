@@ -55,7 +55,7 @@ function extractServers(json: unknown): McpServerEntry[] {
   });
 }
 
-export async function parseConfigFile(filePath: string, client: McpClient): Promise<McpServerEntry[]> {
+export async function parseConfigFile(filePath: string, _client: McpClient): Promise<McpServerEntry[]> {
   const raw = await readFile(filePath, 'utf-8');
   const cleaned = stripJsoncComments(raw);
 

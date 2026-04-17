@@ -11,7 +11,6 @@ const CACHE_DIR = join(
   'mcp-lock',
 );
 const METADATA_TTL = 3_600_000;   // 1 hour
-const AUDIT_TTL    = 900_000;     // 15 minutes
 const REQUEST_TIMEOUT = 10_000;
 const MAX_RETRIES = 2;
 

@@ -8,11 +8,7 @@ import { rewriteConfigPin } from '../config/config-writer.js';
 import { renderDiffBlock } from '../output/table.js';
 import { info, warn, success, error, printJson, isJsonMode } from '../output/logger.js';
 import { confirm } from '../util/prompt.js';
-import {
-  LockfileMissingError,
-  ServerNotInLockfileError,
-  McpLockError,
-} from '../util/errors.js';
+import { ServerNotInLockfileError } from '../util/errors.js';
 import type { LockEntry, LockFile } from '../lockfile/schema.js';
 
 interface UpdateOptions {

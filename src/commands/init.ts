@@ -1,4 +1,3 @@
-import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { discoverConfigs, loadConfig, determineScope, dedupeServers } from '../config/config-discovery.js';
 import { resolvePackage } from '../resolver/package-resolver.js';
@@ -9,7 +8,7 @@ import { locateLockfile, lockfileExists, writeLockfile } from '../lockfile/io.js
 import { rewriteConfigPin } from '../config/config-writer.js';
 import { renderInitTable } from '../output/table.js';
 import { info, warn, error, success, printJson, isJsonMode } from '../output/logger.js';
-import { NoServersFoundError, McpLockError } from '../util/errors.js';
+import { NoServersFoundError } from '../util/errors.js';
 import type { LockFile, LockEntry, InitResult } from '../lockfile/schema.js';
 
 const VERSION = '0.1.0';
@@ -61,16 +60,6 @@ async function buildLockEntry(
     const msg = err instanceof Error ? err.message : String(err);
     return { name: server.name, skip: `registry error: ${msg}` };
   }
-}
-
-async function runBatch<T>(items: T[], fn: (item: T) => Promise<unknown>, concurrency: number): Promise<PromiseSettledResult<unknown>[]> {
-  const results: PromiseSettledResult<unknown>[] = [];
-  for (let i = 0; i < items.length; i += concurrency) {
-    const batch = items.slice(i, i + concurrency);
-    const batchResults = await Promise.allSettled(batch.map(fn));
-    results.push(...batchResults);
-  }
-  return results;
 }
 
 export async function runInit(opts: InitOptions): Promise<void> {

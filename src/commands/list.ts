@@ -2,7 +2,6 @@ import { resolve } from 'node:path';
 import { readLockfile, locateLockfile, lockfileExists } from '../lockfile/io.js';
 import { renderLockfileTable } from '../output/table.js';
 import { info, printJson, isJsonMode } from '../output/logger.js';
-import { LockfileMissingError } from '../util/errors.js';
 
 interface ListOptions {
   global: boolean;
