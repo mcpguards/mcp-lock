@@ -34,13 +34,13 @@ The March 2026 axios supply chain attack compromised a minor version bump (`1.14
 
 ```bash
 # 1. Lock all your MCP servers (one time)
-npx mcp-lock init
+npx @mcpguards/mcp-lock init
 
 # 2. Commit the lockfile
 git add .mcp.lock && git commit -m "chore: add mcp-lock lockfile"
 
 # 3. Verify on every CI run (exits 1 if anything changed)
-npx mcp-lock verify
+npx @mcpguards/mcp-lock verify
 ```
 
 That's it. If a package changes between runs, you'll know before your AI agent runs it.

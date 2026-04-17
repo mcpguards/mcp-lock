@@ -1,5 +1,5 @@
 {
-  "name": "mcp-lock",
+  "name": "@mcpguards/mcp-lock",
   "version": "0.1.0",
   "description": "npm ci for your MCP servers — integrity verification for AI coding tool packages",
   "type": "module",
@@ -42,8 +42,7 @@
     "node": ">=18.3.0"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
