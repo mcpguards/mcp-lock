@@ -1,0 +1,12 @@
+{
+  "editor.fontSize": 14,
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+        "env": {}
+      }
+    }
+  }
+}

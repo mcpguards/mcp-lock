@@ -1,0 +1,71 @@
+{
+  "name": "mcp-lock",
+  "version": "0.1.0",
+  "description": "npm ci for your MCP servers — integrity verification for AI coding tool packages",
+  "type": "module",
+  "bin": {
+    "mcp-lock": "./dist/mcp-lock.js"
+  },
+  "files": [
+    "dist",
+    "action.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup && chmod +x dist/mcp-lock.js",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": [
+    "mcp",
+    "security",
+    "supply-chain",
+    "lockfile",
+    "integrity",
+    "npm-audit",
+    "ai-agent",
+    "claude",
+    "cursor",
+    "model-context-protocol",
+    "sbom",
+    "slsa"
+  ],
+  "author": "Vamshidhar Reddy Parupally",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.3.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/semver": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.5.0",
+    "semver": "^7.6.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0",
+    "undici": "^6.0.0",
+    "vitest": "^2.0.0",
+    "zod": "^3.23.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcpguards/mcp-lock.git"
+  },
+  "homepage": "https://github.com/mcpguards/mcp-lock#readme",
+  "bugs": {
+    "url": "https://github.com/mcpguards/mcp-lock/issues"
+  }
+}

@@ -1,0 +1,61 @@
+name: 'MCP Lock'
+description: 'Verify MCP server packages have not changed since last lock — npm ci for your AI coding tools'
+author: 'Vamshidhar Reddy Parupally'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  config-path:
+    description: 'Path to MCP config file (e.g. .mcp.json). Leave empty to auto-discover.'
+    required: false
+    default: ''
+  fail-on-missing-lock:
+    description: 'Exit with code 2 if no lockfile exists (recommended: true)'
+    required: false
+    default: 'true'
+  sarif-output:
+    description: 'Path to write SARIF 2.1.0 report for GitHub Security tab upload'
+    required: false
+    default: ''
+  working-directory:
+    description: 'Directory to run mcp-lock in'
+    required: false
+    default: '.'
+
+outputs:
+  changed-servers:
+    description: 'Number of servers that changed since last lock'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Run mcp-lock verify
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        MCP_LOCK_FAIL_ON_MISSING: ${{ inputs.fail-on-missing-lock }}
+      run: |
+        CONFIG_FLAG=""
+        if [ -n "${{ inputs.config-path }}" ]; then
+          CONFIG_FLAG="--config ${{ inputs.config-path }}"
+        fi
+
+        SARIF_FLAG=""
+        if [ -n "${{ inputs.sarif-output }}" ]; then
+          SARIF_FLAG="--sarif ${{ inputs.sarif-output }}"
+        fi
+
+        npx --yes mcp-lock@0.1.0 verify $CONFIG_FLAG $SARIF_FLAG || {
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -eq 2 ] && [ "$MCP_LOCK_FAIL_ON_MISSING" != "true" ]; then
+            echo "::warning::No mcp-lock lockfile found. Run 'mcp-lock init' to create one."
+            exit 0
+          fi
+          exit $EXIT_CODE
+        }

@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"],
+      "env": {}
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "ghp_test"
+      }
+    },
+    "pinned": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory@2025.1.1"],
+      "env": {}
+    }
+  }
+}

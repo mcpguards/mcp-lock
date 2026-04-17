@@ -1,0 +1,17 @@
+// Claude Desktop config with JSONC comments
+{
+  // MCP Servers
+  "mcpServers": {
+    /* filesystem server */
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {}
+    },
+    "python-server": {
+      "command": "uvx",
+      "args": ["mcp-server-python"],
+      "env": {}
+    }
+  }
+}

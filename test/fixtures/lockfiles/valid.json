@@ -1,0 +1,30 @@
+{
+  "lockfileVersion": 1,
+  "generatedBy": "mcp-lock@0.1.0",
+  "generatedAt": "2026-04-16T12:00:00.000Z",
+  "scope": "project",
+  "servers": {
+    "filesystem": {
+      "source": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+        "configPath": "/test/.mcp.json"
+      },
+      "resolved": {
+        "registry": "npm",
+        "name": "@modelcontextprotocol/server-filesystem",
+        "version": "2026.1.1",
+        "tarball": "https://registry.npmjs.org/@modelcontextprotocol/server-filesystem/-/server-filesystem-2026.1.1.tgz",
+        "integrity": "sha512-testIntegrity1234==",
+        "shasum": "abc123def456",
+        "publishedAt": "2026-01-01T00:00:00.000Z"
+      },
+      "attestation": {
+        "present": true,
+        "predicateTypes": ["https://slsa.dev/provenance/v1"]
+      },
+      "lockedAt": "2026-04-16T12:00:00.000Z"
+    }
+  },
+  "checksum": "PLACEHOLDER"
+}
